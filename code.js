@@ -24,7 +24,7 @@ let buttons = document.querySelectorAll("button");
 
 function updateDisplay(){
     const display = document.getElementById("display");
-    
+    // display.style.fontSize = '5.5em';
     if(displayValue == "عمتقسم على 0 يا حمار؟"){
         display.style.fontSize = "25px";
     }
