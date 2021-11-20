@@ -2,7 +2,7 @@
 let add = (a, b) => (a + b);
 let subtract = (a, b) => a - b;
 let multiply = (a, b) => a*b
-let divide = (a, b) => b==0 ? "Error" : (a/b);
+let divide = (a, b) => b==0 ? "عمتقسم على 0 يا حمار؟" : (a/b);
 
 function operate(op, a, b){
     if(op == "+"){
@@ -23,11 +23,16 @@ let displayValue = "0";
 let buttons = document.querySelectorAll("button");
 
 function updateDisplay(){
+    const display = document.getElementById("display");
+    
+    if(displayValue == "عمتقسم على 0 يا حمار؟"){
+        display.style.fontSize = "25px";
+    }
+    display.innerHTML = displayValue;
     if(displayValue.length >= 9){
         displayValue = displayValue.substring(0, 9);
     }
-    const display = document.getElementById("display");
-    display.innerHTML = displayValue;
+    
 }
 
 updateDisplay();
@@ -102,6 +107,7 @@ function buttonClick(){
             }
             if(element.id == 'dot'){
                 if(dot == false){
+                    dot = true;
                     displayValue += ".";
                     updateDisplay();
                 }
