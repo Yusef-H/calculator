@@ -40,6 +40,9 @@ button{
 .AC{
     background-color: rgb(70, 133, 161);
 }
+.equals{
+    background-color:rgb(230, 189, 9);
+}
 .operator{
     background-color:rgb(230, 189, 9);
 }
