@@ -36,13 +36,14 @@ let secondNum = null;
 let firstOperator = null;
 let secondOperator = null;
 let result;
+let dot = false;
 
 
 
 function buttonClick(){
     buttons.forEach(element => {
         element.addEventListener('click', function(){
-            if(element.className == 'num'){
+            if(element.className == 'num' || element.id == 'zero'){
                 if(displayValue == "0"){
                     displayValue = element.value.toString();
                     updateDisplay();
@@ -63,12 +64,25 @@ function buttonClick(){
                     firstNum = Number(displayValue);
                     displayValue = "0";
                 }
-                else{
+                else if(secondOperator == null){
+                    secondNum = Number(displayValue);
+                    secondOperator = element.value;
+                    firstNum = operate(firstOperator, firstNum, secondNum);
+                    displayValue = firstNum.toString();
+                    updateDisplay();
+                    firstOperator = secondOperator;
+                    secondOperator = null;
+                    displayValue = "0";
+                }
+                if(firstOperator != null && secondOperator == null){
                     secondNum = Number(displayValue);
                 }
-                
-                
+                if(secondOperator){}
             }
+
+        
+                
+        
             if(element.className == 'equals'){
                 if(firstOperator != null){
                     displayValue = operate(firstOperator, firstNum, secondNum).toString();
@@ -82,9 +96,18 @@ function buttonClick(){
                 firstNum = null;
                 secondNum = null;
                 firstOperator = null;
+                secondOperator = null;
                 displayValue = "0";
                 updateDisplay();
             }
+            if(element.id == 'dot'){
+                if(dot == false){
+                    displayValue += ".";
+                    updateDisplay();
+                }
+                
+            }
+        
         })
     });
 }
